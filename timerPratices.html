@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+        <title>Timer Practice</title>
+    <style>
+        .color-box {
+            width: 200px;
+            height: 200px;
+            margin: 20px;
+            padding: 20px;
+            border: 2px solid black;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+
+
+<button id="removeButton" onclick="removeButton()">Click to Remove</button>
+
+
+    <div id="colorBox" class="color-box">
+
+    <button id="stopButton" onclick="stopChangingColor()">stop changing Color</button>
+</div>
+
+<script>
+
+
+    function removeButton() {
+        var button = document.getElementById("removeButton");
+        button.parentNode.removeChild(button);
+    }
+
+          var colors = ["red", "blue", "green", "yellow", "orange"];
+        var intervalId;
+     function changeColor() {
+        var colorBox = document.getElementById("colorBox");
+          var randomColor = colors[Math.floor(Math.random() * colors.length)];
+         colorBox.style.backgroundColor = randomColor;
+    }
+
+    function stopChangingColor() {
+         clearInterval(intervalId);
+    }
+
+    intervalId = setInterval(changeColor, 5000);
+</script>
+</body>
+</html>

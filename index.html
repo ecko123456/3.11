@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>timer Practice</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+             <div class="container">
+         <div class="content">
+         <button id="trigger">Click Me!</button>
+        <div id="new">
+                <button id="colorChanger">Change Background</button>
+        </div>
+         <button id="stop">keep color</button>
+    </div>
+</div>
+<script>
+
+    const colorList = ['red', 'blue', 'green', 'purple', 'yellow'];
+    const myButton = document.getElementById("trigger");
+      const background = document.getElementById("colorChanger");
+        const newColor = document.getElementById("new");
+    const stop = document.getElementById("stop");
+    let interval;
+    function colorRandamize(){
+        return colorList[Math.floor(Math.random() * colorList.length)]
+    }
+    myButton.addEventListener('click', function(){
+
+        setTimeout(function(){
+            console.log("I was pressed 3 seconds ago and removed the button")
+            myButton.remove()
+        }, 3000);
+
+        console.log("Happens right away");
+    });
+          background.addEventListener('click', function(){
+        interval = setInterval(function(){
+            console.log("I changed the color after 5 seconds")
+            newColor.style.backgroundColor = colorRandamize();
+        }, 5000);
+    });
+           stop.addEventListener('click', function(){
+        if(interval){
+            clearInterval(interval);
+            interval = null;
+        }
+    })
+</script>
+</body>
+</html>
